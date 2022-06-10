@@ -38,7 +38,7 @@
     </ul>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { computed } from 'vue';
 
 const props = defineProps({
