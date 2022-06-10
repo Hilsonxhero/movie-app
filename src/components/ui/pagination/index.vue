@@ -41,6 +41,11 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 
+interface Pagination {
+    name: Number,
+    isDisabled?: boolean
+}
+
 const props = defineProps({
     maxVisibleButtons: {
         type: Number,
@@ -60,7 +65,7 @@ const props = defineProps({
         required: true
     },
     currentPage: {
-        type: [Number, String],
+        type: [Number],
         required: true
     },
 },
@@ -82,7 +87,7 @@ const endPage = computed(() => {
 })
 
 const pages = computed(() => {
-    const range = [];
+    const range: Pagination[] = [];
     for (let i = startPage.value; i <= endPage.value; i += 1) {
         range.push({
             name: i,

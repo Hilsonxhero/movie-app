@@ -56,7 +56,7 @@ const route = useRoute()
 
 let movies = ref<any>([])
 let genres = ref<any>([])
-let currentPage = ref<any>(1)
+let currentPage = ref<number>(1)
 let total_pages = ref<any>(null)
 let total_results = ref<any>(null)
 let loading = ref<any>(false)
@@ -99,7 +99,7 @@ const searchHandler = () => {
     fetchMovies()
 }
 
-const filteredGenres = (ids: Array): Array => {
+const filteredGenres = (ids: Array<number>) => {
     return genres.value.filter((genre) => {
         return ids.includes(genre.id);
     });
@@ -111,14 +111,14 @@ watch(currentPage, (currentValue, oldValue) => {
     });
 });
 
-const onPageChange = (page) => {
+const onPageChange = (page: number) => {
     currentPage.value = page;
     window.scrollTo(0, 0);
 }
 
 onMounted(async () => {
     let page = route.query.page
-    currentPage.value = page ? page : 1
+    currentPage.value = page ? Number(page) : 1
     fetchGenres()
     fetchMovies()
 

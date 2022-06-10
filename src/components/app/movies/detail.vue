@@ -77,17 +77,40 @@
 
 <script setup lang="ts">
 
-import { ref } from 'vue';
+interface credit {
+    original_name: string
+}
 
-const props = defineProps({
-    movie: {
-        type: Object,
-        required: true
-    },
-    credits: {
-        type: Array
-    }
-})
+interface genre {
+    name: string,
+    id?: number
+}
+
+interface movie {
+    adult: false,
+    backdrop_path: string,
+    id: number,
+    title: string,
+    release_date: string,
+    overview: string,
+    poster_path: string,
+    budget: number,
+    revenue: number,
+    runtime: number,
+    vote_average: number,
+    vote_count: number,
+    genres: Array<genre>,
+    imdb_id: string,
+    homepage: string,
+}
+
+
+interface Iprops {
+    movie: movie,
+    credits: Array<credit>
+}
+
+const props = defineProps<Iprops>()
 
 const secondsToHms = (d) => {
     d = Number(d);

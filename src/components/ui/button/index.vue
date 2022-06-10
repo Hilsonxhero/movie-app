@@ -13,10 +13,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, PropType, ref } from 'vue'
 import { useRouter } from 'vue-router';
+import { RouteLocationRaw } from 'vue-router'
+
+
 
 const cls = ref<string[]>([])
+
 
 const props = defineProps({
     variant: {
@@ -39,10 +43,11 @@ const props = defineProps({
     },
 
     to: {
-        type: [Object, Number, String],
+        type: [Object, Number],
         required: false
     },
 })
+
 const router = useRouter()
 
 if (props.pill) {
@@ -53,10 +58,8 @@ const clickHandler = () => {
     if (!props.to) {
         return
     }
-    if (isNaN(props.to)) {
-        router.push(props.to)
-    }
-    router.go(props.to)
+
+    typeof props.to === 'object' ? router.push(props.to) : router.go(props.to)
 }
 
 const classes = computed(() => {

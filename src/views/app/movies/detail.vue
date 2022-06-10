@@ -22,7 +22,7 @@
                 <Detail1 :movie="movie" :credits="credits" />
                 <div class="mt-12">
                     <h2 class="font-bold mb-2">Rate it:</h2>
-                    <Rating v-model="rate" @rate="rateHandler" />
+                    <Rating  v-model="rate" @rate="rateHandler" />
                 </div>
             </div>
         </section>
@@ -48,7 +48,7 @@ let movie = ref<any>(null)
 let credits = ref<any>([])
 let id = ref<any>(null)
 
-const rate = ref(0)
+const rate = ref<number>(0)
 
 
 const rateHandler = async () => {

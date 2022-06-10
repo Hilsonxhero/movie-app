@@ -5,7 +5,7 @@ import { Module, Action, Mutation, VuexModule } from "vuex-module-decorators";
 export interface Movie {
   adult: Boolean;
   backdrop_path: string;
-  genre_ids: Array;
+  genre_ids: Array<number>;
   id: Number;
   original_language: string;
   original_title: string;
@@ -19,13 +19,26 @@ export interface Movie {
   vote_count: Number;
 }
 
+interface genre {
+  name: string,
+  id?: number
+}
+
+interface credit {
+  original_name: string
+}
+
+
 export interface MovieInfo {
   errors: Array<string>;
   movies: any;
+  movie: null;
+  genres: Array<genre>;
+  credits: Array<credit>;
 }
 
 @Module
-export default class MovieModule extends VuexModule {
+export default class MovieModule extends VuexModule implements MovieInfo {
   errors = [];
   movies = null;
   movie = null;
@@ -78,7 +91,7 @@ export default class MovieModule extends VuexModule {
   }
 
   @Mutation
-  [Mutations.SET_MOVIES](movies: Movie[]) {
+  [Mutations.SET_MOVIES](movies) {
     this.movies = movies;
   }
 

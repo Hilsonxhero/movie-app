@@ -10,31 +10,21 @@
 
 <script setup lang="ts">
 
-import { reactive, ref, watch } from 'vue';
+import { InputHTMLAttributes, PropType, reactive, ref, watch } from 'vue';
 const emits = defineEmits(['update:modelValue', 'rate'])
-const props = defineProps({
-    'name': {
-        type: String
-    },
-    'value': {
-        type: [String, Number],
-        required: false
-    },
-    'id': String,
-    'disabled': {
-        type: Boolean
-    },
-    'required': {
-        type: Boolean
-    },
-    'modelValue': {
 
-    }
-})
-
+interface Iprops {
+    modelValue: number,
+    name?: string,
+    value?: string | number,
+    id?: string | number,
+    disabled?: undefined | false | true,
+    required?: Boolean,
+}
+const props = defineProps<Iprops>()
 
 const temp_value = ref<any>(null)
-const ratings = reactive<Number[]>([1, 2, 3, 4, 5])
+const ratings = reactive<Array<number>>([1, 2, 3, 4, 5])
 
 const star_over = (index) => {
     if (!props.disabled) {

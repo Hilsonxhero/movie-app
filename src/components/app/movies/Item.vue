@@ -40,14 +40,23 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
+interface genre {
+    name: string,
+    id?: number
+}
+
+interface Iprops {
     movie: {
-        type: Object
+        adult: false,
+        backdrop_path: string,
+        id: number,
+        title: string,
+        release_date: string
     },
-    genres: {
-        type: Array
-    }
-})
+    genres: Array<genre>
+}
+const props = defineProps<Iprops>()
+
 const secure_base_url = process.env.SECURE_BASE_URL
 </script>
 
