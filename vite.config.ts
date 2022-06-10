@@ -15,7 +15,7 @@ import { resolve } from "path";
 // })
 
 
-export default ({ mode }) => {
+export default () => {
   require('dotenv').config({ path: `./.env` });
   return defineConfig({
     plugins: [vue()],
