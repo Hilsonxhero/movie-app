@@ -2,6 +2,7 @@ import { App } from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import { AxiosResponse, AxiosRequestConfig } from "axios";
+import router from "@/router";
 
 /**
  * @description service to call HTTP request via Axios
@@ -22,6 +23,21 @@ class ApiService {
     ApiService.vueInstance.axios.defaults.params = {
       'api_key': process.env.API_KEY
     }
+
+
+    ApiService.vueInstance.axios.interceptors.response.use(
+      response => {
+        return response;
+      },
+      error => {
+        if (error.response.status == 404) {
+          console.log("dfgf");
+          router.push({ name: "not-found" });
+        }
+
+        return Promise.reject(error);
+      }
+    );
 
   }
 

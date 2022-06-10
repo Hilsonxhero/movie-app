@@ -15,6 +15,16 @@ const routes: Array<RouteRecordRaw> = [
                 name: 'movie detail',
                 component: () => import(/* webpackChunkName: "detail" */ "@/views/app/movies/detail.vue"),
             },
+            {
+                path: "/404",
+                component: () =>
+                    import(/* webpackChunkName: "404" */ "@/views/errors/404.vue"),
+                name: "not-found"
+            },
+            {
+                path: "/:match(.*)",
+                redirect: "/404"
+            }
         ]
     },
 ]

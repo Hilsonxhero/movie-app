@@ -5,13 +5,13 @@
         </template>
         <template v-else>
             <section class="my-10">
-                <div class="containerw bg-gray-100 p-5 rounded-md mt-10">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
+                <div class="bg-gray-100 p-5 rounded-md mt-10">
+                    <div class="flex items-center flex-wrap justify-between ">
+                        <div class="flex flex-wrap items-center mb-4 md:mb-0">
 
-                            <h5 class="mr-4"> Search by release date:</h5>
+                            <h5 class="mr-4 mb-4 md:mb-0"> Search by release date:</h5>
 
-                            <div class="flex items-center">
+                            <div class="flex flex-grow md:flex-grow-0 items-center">
                                 <hx-input type="date" class="mr-2" v-model="filters.release_start_date"></hx-input>
                                 <hx-input type="date" v-model="filters.release_end_date"></hx-input>
                             </div>

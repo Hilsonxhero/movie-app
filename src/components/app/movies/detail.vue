@@ -2,13 +2,13 @@
     <div>
         <div class="my-10">
             <div>
-                <div class="grid grid-cols-12 gap-10">
-                    <div class="col-span-4">
-                        <div class="">
-                            <img class="rounded-xl" :src="`${secure_base_url}w500${movie.poster_path}`" alt="">
+                <div class="grid grid-cols-12 gap-y-7 md:gap-8">
+                    <div class="col-span-12 md:col-span-4">
+                        <div class="overflow-hidden relative">
+                            <img class="rounded-xl w-full" :src="`${secure_base_url}w500${movie.poster_path}`" alt="">
                         </div>
                     </div>
-                    <div class="col-span-8">
+                    <div class="col-span-12 md:col-span-8">
                         <div class="flex flex-col space-y-3">
                             <div class="flex items-center justify-between">
                                 <div class="text-gray-700 font-semibold">Budget</div>

@@ -1,6 +1,6 @@
 <template>
     <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <div class="bg-gray-100 rounded-md p-2">
+        <div class="bg-gray-100 rounded-md p-2 hover:shadow-xl transition-shadow duration-200 ease-out">
             <div class="flex flex-wrap">
                 <div class="w-5/12">
                     <div class="overflow-hidden">
@@ -13,7 +13,9 @@
                     <div class="p-4 flex flex-col flex-grow h-full">
                         <div class="h-full">
                             <router-link :to="{ name: 'movie detail', params: { id: movie.id } }">
-                                <h4 class="font-bold text-gray-700">{{ movie.title }}</h4>
+                                <h4
+                                    class="font-bold text-gray-700 hover:text-blue-600 transition-colors duration-200 ease-out">
+                                    {{ movie.title }}</h4>
                             </router-link>
                         </div>
 
